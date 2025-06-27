@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { products, Product } from '../data/products';
+import { products } from '../data/products';
 
 interface Order {
   id: number;
