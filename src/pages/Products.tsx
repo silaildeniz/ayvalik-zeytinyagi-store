@@ -41,28 +41,22 @@ const Products: React.FC = () => {
   };
 
   return (
-    <div>
-      <h1 style={{ textAlign: 'center', marginBottom: '2rem', color: '#8B4513' }}>
+    <div className="products-page">
+      <h1 className="page-title">
         Ürünlerimiz
       </h1>
 
       {/* Filtreler */}
-      <div style={{ 
-        background: 'white', 
-        padding: '2rem', 
-        borderRadius: '10px', 
-        marginBottom: '2rem',
-        boxShadow: '0 5px 15px rgba(0,0,0,0.1)'
-      }}>
-        <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap', alignItems: 'center' }}>
-          <div>
-            <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold' }}>
+      <div className="filters-section">
+        <div className="filters-container">
+          <div className="filter-group">
+            <label className="filter-label">
               Kategori:
             </label>
             <select 
               value={selectedCategory} 
               onChange={(e) => setSelectedCategory(e.target.value)}
-              style={{ padding: '8px', borderRadius: '5px', border: '1px solid #ddd' }}
+              className="filter-select"
             >
               <option value="all">Tümü</option>
               {categories.map((category) => (
@@ -73,8 +67,8 @@ const Products: React.FC = () => {
             </select>
           </div>
 
-          <div style={{ flex: 1, minWidth: '200px' }}>
-            <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold' }}>
+          <div className="filter-group search-group">
+            <label className="filter-label">
               Arama:
             </label>
             <input
@@ -82,19 +76,14 @@ const Products: React.FC = () => {
               placeholder="Ürün ara..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              style={{ 
-                width: '100%', 
-                padding: '8px', 
-                borderRadius: '5px', 
-                border: '1px solid #ddd' 
-              }}
+              className="search-input"
             />
           </div>
         </div>
       </div>
 
       {/* Ürün Sayısı */}
-      <p style={{ marginBottom: '1rem', color: '#666' }}>
+      <p className="product-count">
         {filteredProducts.length} ürün bulundu
       </p>
 
@@ -113,22 +102,17 @@ const Products: React.FC = () => {
               />
               <div className="product-info">
                 <h3 className="product-title">{product.name}</h3>
-                <p style={{ color: '#666', marginBottom: '0.5rem' }}>
+                <p className="product-description">
                   {product.description.substring(0, 100)}...
                 </p>
                 <p className="product-price">{product.price.toFixed(2)} ₺</p>
-                <div style={{ display: 'flex', gap: '0.5rem' }}>
-                  <Link to={`/product/${product.id}`} className="btn" style={{ fontSize: '0.9rem', padding: '8px 20px' }}>
+                <div className="product-actions">
+                  <Link to={`/product/${product.id}`} className="btn product-btn">
                     İncele
                   </Link>
                   <button 
                     onClick={() => addToCart(product)}
-                    className="btn" 
-                    style={{ 
-                      fontSize: '0.9rem', 
-                      padding: '8px 20px',
-                      backgroundColor: '#28a745'
-                    }}
+                    className="btn product-btn add-to-cart-btn"
                   >
                     Sepete Ekle
                   </button>
@@ -138,13 +122,7 @@ const Products: React.FC = () => {
           ))}
         </div>
       ) : (
-        <div style={{ 
-          textAlign: 'center', 
-          padding: '3rem', 
-          background: 'white', 
-          borderRadius: '10px',
-          boxShadow: '0 5px 15px rgba(0,0,0,0.1)'
-        }}>
+        <div className="no-products">
           <h3>Ürün bulunamadı</h3>
           <p>Arama kriterlerinizi değiştirmeyi deneyin.</p>
         </div>
